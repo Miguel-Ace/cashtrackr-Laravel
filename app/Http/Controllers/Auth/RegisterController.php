@@ -7,6 +7,7 @@ use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -21,5 +22,9 @@ class RegisterController extends Controller
 
         // Almacenar en la base de datos
         $user = User::create($data);
+
+        event(new Registered($user));
+
+        Auth::login($user);
     }
 }
