@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\LogoutController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -35,6 +36,12 @@ Route::post('/email/verification-notification', function(Request $request) {
     return back()->with('success', 'Se ha reenviado el correo de verificación');
 })->middleware(['auth', 'throttle:1,1'])->name('verification.send');
 
-Route::get('/dashboard', function() {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::middleware(['auth','verified'])->prefix('dashboard')->group(function() {
+    Route::get('/', [BudgetController::class, 'index'])->name('dashboard');
+    Route::get('/budget/create', [BudgetController::class, 'create'])->name('budget.create');
+    Route::post('/budget', [BudgetController::class, 'store'])->name('budget.store');
+    Route::get('budget/{budget}/edit', [BudgetController::class, 'edit'])->name('budget.edit');
+    Route::put('budget/{budget}', [BudgetController::class, 'update'])->name('budget.update');
+});
