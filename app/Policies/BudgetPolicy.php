@@ -9,9 +9,9 @@ use Illuminate\Auth\Access\Response;
 class BudgetPolicy
 {
 
-    public function view(User $user, Budget $budget): bool
+    public function view(User $user, Budget $budget): Response
     {
-        return false;
+        return $user->id === $budget->user_id ? Response::allow() : Response::deny('No tienes permisos para ver este presupuesto');
     }
 
     public function update(User $user, Budget $budget): Response
