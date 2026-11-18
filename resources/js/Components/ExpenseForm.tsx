@@ -77,8 +77,11 @@ export default function ExpenseForm() {
                     </div>
                 )}
 
-                <button disabled={processing} type="submit" className="mt-5 bg-purple-950 hover:bg-purple-800 w-full p-3 rounded-lg text-white font-bold  text-xl cursor-pointer">
-                    {processing ? 'Guardando' : 'Agregar Gasto'}
+                <button 
+                    disabled={processing} 
+                    type="submit" 
+                    className={`${processing ? 'opacity-60 cursor-not-allowed' : 'hover:bg-purple-800 cursor-pointer'} bg-purple-950 mt-5 w-full p-3 rounded-lg text-white font-bold  text-xl`}>
+                    {processing ? 'Guardando...' : 'Agregar Gasto'}
                 </button>
             </form>
         </div>
