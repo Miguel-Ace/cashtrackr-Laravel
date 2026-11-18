@@ -36,6 +36,7 @@
                         <p class="text-white text-xl">Hola: {{ auth()->user()->name }}</p>
                         <x-dropdown-menu />
                     @endauth
+                </nav>
         </div>
     </header>    
     
