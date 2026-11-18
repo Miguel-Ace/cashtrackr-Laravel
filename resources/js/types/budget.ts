@@ -1,3 +1,5 @@
+import { Expense } from "./expense"
+
 type budgetType = 'general' | 'goal'
 
 export type Budget = {
@@ -5,5 +7,6 @@ export type Budget = {
     name: string,
     amount: string,
     type: budgetType,
-    created_at: string
+    created_at: string,
+    expenses: Expense[]
 }
