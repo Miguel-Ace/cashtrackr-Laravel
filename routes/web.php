@@ -49,4 +49,6 @@ Route::middleware(['auth','verified'])->prefix('dashboard')->group(function() {
     Route::delete('budget/{budget}', [BudgetController::class, 'destroy'])->name('budget.destroy');
 
     Route::post('budget/{budget}/expense', [ExpenseController::class, 'store'])->name('expense.store');
+    Route::put('/budget/{budget}/expense/{expense}', [ExpenseController::class, 'update'])->name('expense.update');
+    Route::delete('/budget/{budget}/expense/{expense}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
 });
