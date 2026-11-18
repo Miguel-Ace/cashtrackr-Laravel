@@ -18,13 +18,21 @@ class ExpenseController extends Controller
             ->with('success','Gasto Registrado Correctamente');
     }
 
-    public function update(Request $request, Expense $expense)
+    public function update(ExpenseRequest $request, Budget $budget, Expense $expense)
     {
-        //
+        $expense->update($request->validated());
+
+        return redirect()
+            ->route('budget.show', $budget)
+            ->with('success','Gasto Actualizado Correctamente');
     }
 
-    public function destroy(Expense $expense)
+    public function destroy(Budget $budget, Expense $expense)
     {
-        //
+        $expense->delete();
+
+        return redirect()
+            ->route('budget.show', $budget)
+            ->with('success','Gasto Eliminado Correctamente');
     }
 }
