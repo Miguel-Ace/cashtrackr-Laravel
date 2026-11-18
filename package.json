@@ -25,6 +25,7 @@
         "@inertiajs/vite": "^3.11.0",
         "@vitejs/plugin-react": "^6.3.0",
         "react": "^19.3.1",
+        "react-circular-progressbar": "^2.2.0",
         "react-dom": "^19.3.1",
         "react-toastify": "^11.2.0",
         "ziggy-js": "^2.7.0",
