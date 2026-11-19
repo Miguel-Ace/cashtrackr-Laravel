@@ -29,8 +29,6 @@ export default function Show({budget, categories, spent, remaining} : Props) {
 
   
   const openCreateModal = useExpenseModalStore(state => state.openCreateModal)
-  useExpenseModalStore.getState().setBudget(budget)
-  useExpenseModalStore.getState().setCategories(categories)
 
   const percentageUsed = +((+spent / +budget.amount) * 100).toFixed(2)
   const [progress, setProgress] = useState(0)
@@ -42,6 +40,11 @@ export default function Show({budget, categories, spent, remaining} : Props) {
 
       return () => clearTimeout(timeout)
   }, [percentageUsed])
+
+  useEffect(() => {
+      useExpenseModalStore.getState().setBudget(budget)
+      useExpenseModalStore.getState().setCategories(categories)
+  }, [])
 
   return (
     <>
