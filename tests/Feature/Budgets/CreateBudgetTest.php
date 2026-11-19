@@ -70,7 +70,9 @@ test('creates a budget and redirects with success message', function() {
         'type' => 'goal'
     ]);
 
-    $response->assertRedirect(route('dashboard'));
+    $budget = Budget::first();
+
+    $response->assertRedirect(route('budget.show', $budget));
 
     $response->assertSessionHas('success', 'Presupuesto creado correctamente');
 });
@@ -130,7 +132,9 @@ test('accept valid budget types', function () {
         'type' => 'general'
     ]);
 
-    $response->assertRedirect(route('dashboard'));
+    $budget = Budget::first();
+
+    $response->assertRedirect(route('budget.show', $budget));
 
     $response->assertSessionHas('success', 'Presupuesto creado correctamente');
 
