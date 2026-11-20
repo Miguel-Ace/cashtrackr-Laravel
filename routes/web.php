@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BudgetChatController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\LogoutController;
@@ -51,4 +52,6 @@ Route::middleware(['auth','verified'])->prefix('dashboard')->group(function() {
     Route::post('budget/{budget}/expense', [ExpenseController::class, 'store'])->name('expense.store');
     Route::put('/budget/{budget}/expense/{expense}', [ExpenseController::class, 'update'])->name('expense.update');
     Route::delete('/budget/{budget}/expense/{expense}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
+
+    Route::post('/budget/{budget}/chat', [BudgetChatController::class, 'store'])->name('budget.chat');
 });
