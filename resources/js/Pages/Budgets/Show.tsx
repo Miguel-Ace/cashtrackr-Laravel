@@ -10,6 +10,7 @@ import { formatDate } from "@/utils";
 import ProgressBar from "@/Components/ProgressBar";
 import ExpenseDropdown from "@/Components/ExpenseDropdown";
 import DeleteExpenseModal from "@/Components/DeleteExpenseModal";
+import CashTrackrAgent from "@/Components/CashTrackrAgent";
 
 type Props = {
   budget: Budget
@@ -19,8 +20,8 @@ type Props = {
 }
 
 export default function Show({budget, categories, spent, remaining} : Props) {
-  const { flash } = usePage().props
-
+  const { flash, user } = usePage().props
+  
   useEffect(() => {
     if(flash.success){
       toast.success(flash.success)
@@ -133,6 +134,8 @@ export default function Show({budget, categories, spent, remaining} : Props) {
 
       </section>
 
+      <CashTrackrAgent budgetId={budget.id} name={user.name}/>
+      
       <ExpenseModal />
       <DeleteExpenseModal />
       <ToastContainer />
