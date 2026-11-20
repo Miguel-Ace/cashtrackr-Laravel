@@ -20,10 +20,12 @@
         "@laravel/multiplex": "^0.4.1"
     },
     "dependencies": {
+        "@ai-sdk/react": "^4.0.181",
         "@headlessui/react": "^2.2.10",
         "@inertiajs/react": "^3.11.0",
         "@inertiajs/vite": "^3.11.0",
         "@vitejs/plugin-react": "^6.3.0",
+        "ai": "^7.0.177",
         "react": "^19.3.1",
         "react-circular-progressbar": "^2.2.0",
         "react-dom": "^19.3.1",
