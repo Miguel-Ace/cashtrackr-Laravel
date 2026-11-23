@@ -33,6 +33,7 @@
           </div>
                 <nav class="flex flex-col items-center lg:flex-row gap-4 ">
                     @auth
+                        <x-subscription-badge />
                         <p class="text-white text-xl">Hola: {{ auth()->user()->name }}</p>
                         <x-dropdown-menu />
                     @endauth
