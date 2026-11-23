@@ -35,8 +35,8 @@
 
                 <nav class="flex flex-col lg:flex-row items-center gap-4">
                     @auth
+                        <x-subscription-badge />
                         <p class="text-white text-xl">Hola: {{ auth()->user()->name }}</p>
-                        
                         <x-dropdown-menu />
                     @else
                         @if (Route::has('login'))
