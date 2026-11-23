@@ -1,16 +1,17 @@
-import { Head, usePage } from "@inertiajs/react";
+import { usePage } from "@inertiajs/react";
 import { Budget } from "@/types/budget";
 import AmountDisplay from "@/Components/AmountDisplay";
 import ExpenseModal from "@/Components/ExpenseModal";
 import { useExpenseModalStore } from "@/stores/expense-modal-store";
 import { Category } from "@/types/category";
-import { ToastContainer, toast } from 'react-toastify';
 import { useEffect, useState } from "react";
 import { formatDate } from "@/utils";
 import ProgressBar from "@/Components/ProgressBar";
 import ExpenseDropdown from "@/Components/ExpenseDropdown";
 import DeleteExpenseModal from "@/Components/DeleteExpenseModal";
 import CashTrackrAgent from "@/Components/CashTrackrAgent";
+import PricingTable from "@/Components/PricingTable";
+import AppLayout from "@/Layouts/AppLayout";
 
 type Props = {
   budget: Budget
@@ -20,14 +21,7 @@ type Props = {
 }
 
 export default function Show({budget, categories, spent, remaining} : Props) {
-  const { flash, user } = usePage().props
-  
-  useEffect(() => {
-    if(flash.success){
-      toast.success(flash.success)
-    }
-  }, [flash])
-
+  const { user } = usePage().props
   
   const openCreateModal = useExpenseModalStore(state => state.openCreateModal)
 
@@ -48,9 +42,7 @@ export default function Show({budget, categories, spent, remaining} : Props) {
   }, [])
 
   return (
-    <>
-      <Head title={`Presupuesto: ${budget.name}`} />
-
+    <AppLayout title={`Presupuesto: ${budget.name}`}>
       <section className="sm:flex sm:items-center mt-10">
           <div className="sm:flex-auto">
               <h1 className="font-bold text-4xl">Presupuesto: {budget.name}</h1>
@@ -134,11 +126,16 @@ export default function Show({budget, categories, spent, remaining} : Props) {
 
       </section>
 
-      <CashTrackrAgent budgetId={budget.id} name={user.name}/>
+      {user.subscribed ? (
+        <CashTrackrAgent budgetId={budget.id} name={user.user.name}/>
+      ) : (
+        <div className="mt-10">
+          <PricingTable />
+        </div>
+      )}
       
       <ExpenseModal />
       <DeleteExpenseModal />
-      <ToastContainer />
-    </>
+    </AppLayout>
   )
 }
