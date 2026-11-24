@@ -87,6 +87,10 @@ declare module 'ziggy-js' {
             "binding": "id"
         }
     ],
+    "settings.profile": [],
+    "settings.profile.update": [],
+    "settings.password": [],
+    "settings.password.update": [],
     "budget.chat": [
         {
             "name": "budget",
