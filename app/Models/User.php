@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Notifications\ForgotPasswordEmail;
 use App\Notifications\verifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -25,6 +26,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new verifyEmail);
     }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ForgotPasswordEmail($token));
+    }
+
     /**
      * Get the attributes that should be cast.
      *
