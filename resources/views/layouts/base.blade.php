@@ -30,7 +30,9 @@
         <header class="bg-purple-950 py-5">
             <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:justify-between">
                 <div class="w-full max-w-100">
-                    <img src="{{ asset('img/logo.svg') }}" alt="" class="w-full block">
+                    <a href="{{route('home')}}">
+                        <img src="{{ asset('img/logo.svg') }}" alt="" class="w-full block">
+                    </a>
                 </div>
 
                 <nav class="flex flex-col lg:flex-row items-center gap-4">
