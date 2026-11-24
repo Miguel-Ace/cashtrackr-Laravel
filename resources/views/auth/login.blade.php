@@ -32,7 +32,7 @@
         <div class="flex flex-col gap-2">
             <div class="flex  items-center justify-between">
                 <label class="font-bold text-2xl">Password</label>
-                <a href="#" class="text-indigo-950" tabindex="3">¿Olvidaste tu Contraseña?</a>
+                <a href="{{route('password.request')}}" class="text-indigo-950" tabindex="3">¿Olvidaste tu Contraseña?</a>
             </div>
             <input 
                 type="password" 
